@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class mouseDragable : MonoBehaviour {
-    double offsetX;
-    double offsetY;
+    float offsetX;
+    float offsetY;
 	// Use this for initialization
 	public void dragStart() {
-        offsetX = Input.mousePosition.x;
-        offsetY = Input.mousePosition.y;
+        offsetX = Input.mousePosition.x - transform.position.x;
+        offsetY = Input.mousePosition.y - transform.position.y;
     }
 	
 	// Update is called once per frame
 	public void drag() {
-       transform.position = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0);
+       transform.position = new Vector3((Input.mousePosition.x - offsetX), (Input.mousePosition.y - offsetY), 0);
 	}
 }
